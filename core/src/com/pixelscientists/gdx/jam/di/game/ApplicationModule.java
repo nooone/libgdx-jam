@@ -10,12 +10,12 @@ import dagger.Provides;
  * @author Daniel Holderbaum
  */
 @Module
-public class GameModule {
+public class ApplicationModule {
 
     private AssetManager assetManager;
     private SpriteBatch spriteBatch;
 
-    public GameModule() {
+    public ApplicationModule() {
         assetManager = new AssetManager();
         Texture.setAssetManager(assetManager);
         spriteBatch = new SpriteBatch();

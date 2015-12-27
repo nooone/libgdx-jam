@@ -6,5 +6,5 @@ import javax.inject.Scope;
  * @author Daniel Holderbaum
  */
 @Scope
-public @interface ScreenScoped {
+public @interface GameScoped {
 }

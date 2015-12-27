@@ -1,33 +1,32 @@
 package com.pixelscientists.gdx.jam.di;
 
-import com.pixelscientists.gdx.jam.di.game.DaggerGameComponent;
-import com.pixelscientists.gdx.jam.di.game.GameComponent;
-import com.pixelscientists.gdx.jam.di.game.GameModule;
-import com.pixelscientists.gdx.jam.di.screen.ScreenComponent;
-import com.pixelscientists.gdx.jam.di.screen.ScreenModule;
+import com.pixelscientists.gdx.jam.di.game.DaggerApplicationComponent;
+import com.pixelscientists.gdx.jam.di.game.ApplicationComponent;
+import com.pixelscientists.gdx.jam.di.game.ApplicationModule;
+import com.pixelscientists.gdx.jam.di.screen.GameComponent;
+import com.pixelscientists.gdx.jam.di.screen.GameModule;
 
 /**
  * Created by noone on 27.12.2015.
  */
 public abstract class DI {
 
+    private static ApplicationComponent applicationComponent;
     private static GameComponent gameComponent;
-    private static ScreenComponent screenComponent;
+
+    public static void newApplication() {
+        applicationComponent = DaggerApplicationComponent.builder().applicationModule(new ApplicationModule()).build();
+    }
 
     public static void newGame() {
-        gameComponent = DaggerGameComponent.builder().gameModule(new GameModule()).build();
+        gameComponent = applicationComponent.plus(new GameModule());
     }
 
-    public static void newScreen() {
-        screenComponent = gameComponent.plus(new ScreenModule());
+    public static ApplicationComponent getApplicationComponent() {
+        return applicationComponent;
     }
-
 
     public static GameComponent getGameComponent() {
         return gameComponent;
-    }
-
-    public static ScreenComponent getScreenComponent() {
-        return screenComponent;
     }
 }
