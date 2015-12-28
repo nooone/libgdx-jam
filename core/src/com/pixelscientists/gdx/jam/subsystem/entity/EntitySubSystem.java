@@ -13,10 +13,22 @@ public class EntitySubSystem {
 
     public Player player;
 
-    private List<Entity> entities;
+    public List<Entity> entities;
 
     public EntitySubSystem() {
         entities = new ArrayList<Entity>();
+    }
+
+    public void update(float deltaTime) {
+        for (Entity entity : entities) {
+            entity.update(deltaTime);
+        }
+    }
+
+    public void render() {
+        for (Entity entity : entities) {
+            entity.render();
+        }
     }
 
 }

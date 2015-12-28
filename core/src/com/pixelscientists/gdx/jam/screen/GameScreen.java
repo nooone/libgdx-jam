@@ -54,8 +54,9 @@ public class GameScreen implements Screen {
         DI.getGameComponent().inject(this);
         entitySubSystem.player = new Player();
 
-        viewport = new FitViewport(16, 9);
-        debugRenderer = new Box2DDebugRenderer();
+//        viewport = new FitViewport(16, 9);
+        viewport = new ExtendViewport(16, 9, 16, 12);
+        debugRenderer = new Box2DDebugRenderer(true, true, false, true, true, true);
 
 //        parallaxBackground = new ParallaxBackground(new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
         parallaxBackground = new ParallaxBackground(new ParallaxCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
@@ -75,13 +76,21 @@ public class GameScreen implements Screen {
 
         parallaxBackground.render(spriteBatch, entitySubSystem.player.body.getPosition());
 
+        entitySubSystem.update(delta);
+
+        spriteBatch.setProjectionMatrix(viewport.getCamera().combined);
+//        spriteBatch.setTransformMatrix(viewport.getCamera().view);
+        spriteBatch.begin();
+        entitySubSystem.render();
+        spriteBatch.end();
+
         debugRenderer.render(physicsSubSystem.world, viewport.getCamera().combined);
     }
 
     @Override
     public void resize(int width, int height) {
-        viewport.update(width, height);
         hudSubSystem.stage.getViewport().update(width, height, true);
+        viewport.update(width, height);
 
         parallaxBackground = new ParallaxBackground(new ParallaxCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
         ParallaxLayer layer = new ParallaxLayer(new TextureRegion(new Texture("fx/1.jpg")), new Vector2(1f, 1f), new Vector2(0f, 0f), new Vector2(0f, 0f));
