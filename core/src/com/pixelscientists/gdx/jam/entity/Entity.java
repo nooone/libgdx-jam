@@ -9,7 +9,7 @@ import com.pixelscientists.gdx.jam.di.DI;
 public abstract class Entity implements Disposable {
 
     public Entity() {
-        DI.getGameComponent().entitySubSystem().entities.add(this);
+        DI.getGameComponent().entitySubSystem().addEntity(this);
     }
 
     public abstract void render();
@@ -18,6 +18,6 @@ public abstract class Entity implements Disposable {
 
     @Override
     public void dispose() {
-        DI.getGameComponent().entitySubSystem().entities.remove(this);
+        DI.getGameComponent().entitySubSystem().removeEntity(this);
     }
 }

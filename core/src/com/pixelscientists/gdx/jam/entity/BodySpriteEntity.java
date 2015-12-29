@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.pixelscientists.gdx.jam.di.DI;
 
 /**
@@ -20,6 +21,7 @@ public class BodySpriteEntity extends Entity {
         this.body = body;
         this.sprite = sprite;
         body.setUserData(this);
+        DI.getGameComponent().overlaySubSystem().add(body);
     }
 
     @Override

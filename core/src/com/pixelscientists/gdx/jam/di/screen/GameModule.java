@@ -1,8 +1,10 @@
 package com.pixelscientists.gdx.jam.di.screen;
 
-import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
+import com.pixelscientists.gdx.jam.subsystem.OverlaySubsystem;
 import com.pixelscientists.gdx.jam.subsystem.entity.EntitySubSystem;
-import com.pixelscientists.gdx.jam.subsystem.hud.HudSubSystem;
+import com.pixelscientists.gdx.jam.subsystem.hud.UiSubSystem;
 import com.pixelscientists.gdx.jam.subsystem.physics.PhysicsSubSystem;
 import dagger.Module;
 import dagger.Provides;
@@ -13,14 +15,19 @@ import dagger.Provides;
 @Module
 public class GameModule {
 
+    private Viewport gameViewport;
+
     private PhysicsSubSystem physicsSubSystem;
     private EntitySubSystem entitySubSystem;
-    private HudSubSystem hudSubSystem;
+    private OverlaySubsystem overlaySubsystem;
+    private UiSubSystem uiSubSystem;
 
     public GameModule() {
+        gameViewport = new ExtendViewport(16, 9, 16, 12);
         physicsSubSystem = new PhysicsSubSystem();
         entitySubSystem = new EntitySubSystem();
-        hudSubSystem = new HudSubSystem();
+        uiSubSystem = new UiSubSystem();
+        overlaySubsystem = new OverlaySubsystem(gameViewport);
     }
 
     @Provides
@@ -34,8 +41,18 @@ public class GameModule {
     }
 
     @Provides
-    public HudSubSystem provideHudSubSystem() {
-        return hudSubSystem;
+    public UiSubSystem provideUiSubSystem() {
+        return uiSubSystem;
+    }
+
+    @Provides
+    public OverlaySubsystem provideOverlaySubsystem() {
+        return overlaySubsystem;
+    }
+
+    @Provides
+    public Viewport provideGameViewport() {
+        return gameViewport;
     }
 
 }

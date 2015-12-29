@@ -14,15 +14,15 @@ public class PlayerInputProcessor implements InputProcessor {
         switch (keycode) {
             case Input.Keys.W:
             case Input.Keys.UP:
-                DI.getGameComponent().entitySubSystem().player.accelerate();
+//                DI.getGameComponent().entitySubSystem().player.accelerate();
                 return true;
             case Input.Keys.A:
             case Input.Keys.LEFT:
-                DI.getGameComponent().entitySubSystem().player.turnLeft();
+//                DI.getGameComponent().entitySubSystem().player.turnLeft();
                 return true;
             case Input.Keys.D:
             case Input.Keys.RIGHT:
-                DI.getGameComponent().entitySubSystem().player.turnRight();
+//                DI.getGameComponent().entitySubSystem().player.turnRight();
                 return true;
             case Input.Keys.SPACE:
 

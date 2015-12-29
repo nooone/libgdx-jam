@@ -8,11 +8,11 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 /**
  * @author Daniel Holderbaum
  */
-public class HudSubSystem implements Disposable {
+public class UiSubSystem implements Disposable {
 
     public Stage stage;
 
-    public HudSubSystem() {
+    public UiSubSystem() {
         stage = new Stage(new ScreenViewport());
 
         Table rootTable = new Table();

@@ -1,5 +1,6 @@
 package com.pixelscientists.gdx.jam.subsystem.entity;
 
+import com.badlogic.gdx.utils.Array;
 import com.pixelscientists.gdx.jam.entity.Entity;
 import com.pixelscientists.gdx.jam.entity.Player;
 
@@ -13,13 +14,35 @@ public class EntitySubSystem {
 
     public Player player;
 
-    public List<Entity> entities;
+    private Array<Entity> entitiesToAdd;
+    private Array<Entity> entitiesToRemove;
+    private Array<Entity> entities;
 
     public EntitySubSystem() {
-        entities = new ArrayList<Entity>();
+        entitiesToAdd = new Array<Entity>();
+        entitiesToRemove = new Array<Entity>();
+        entities = new Array<Entity>();
+    }
+
+    public void addEntity(Entity entity) {
+        entitiesToAdd.add(entity);
+    }
+
+    public void removeEntity(Entity entity) {
+        entitiesToRemove.add(entity);
     }
 
     public void update(float deltaTime) {
+        for (Entity entity : entitiesToAdd) {
+            entities.add(entity);
+        }
+        entitiesToAdd.clear();
+
+        for (Entity entity : entitiesToRemove) {
+            entities.removeValue(entity, true);
+        }
+        entitiesToRemove.clear();
+
         for (Entity entity : entities) {
             entity.update(deltaTime);
         }
