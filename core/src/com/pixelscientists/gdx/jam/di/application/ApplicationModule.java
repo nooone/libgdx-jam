@@ -1,4 +1,4 @@
-package com.pixelscientists.gdx.jam.di.game;
+package com.pixelscientists.gdx.jam.di.application;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;

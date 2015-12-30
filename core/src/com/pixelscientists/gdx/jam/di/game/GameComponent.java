@@ -1,4 +1,4 @@
-package com.pixelscientists.gdx.jam.di.screen;
+package com.pixelscientists.gdx.jam.di.game;
 
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.pixelscientists.gdx.jam.screen.GameScreen;

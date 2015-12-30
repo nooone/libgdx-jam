@@ -1,4 +1,4 @@
-package com.pixelscientists.gdx.jam.di.screen;
+package com.pixelscientists.gdx.jam.di.game;
 
 import javax.inject.Scope;
 
