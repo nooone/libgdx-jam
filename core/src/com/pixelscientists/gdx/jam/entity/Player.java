@@ -11,10 +11,10 @@ import com.pixelscientists.gdx.jam.entity.shot.VulcanShot;
 /**
  * @author Daniel Holderbaum
  */
-public class Player extends BodySpriteEntity {
+public class Player extends BaseSteerableEntity {
 
     public Player() {
-        super(BodyFactory.createPlayer(), SpriteFactory.createPlayer());
+        super(BodyFactory.createPlayer(), SpriteFactory.createPlayer(), 5f);
     }
 
     public void accelerate() {

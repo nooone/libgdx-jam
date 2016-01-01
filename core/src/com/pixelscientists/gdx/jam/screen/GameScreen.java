@@ -21,6 +21,7 @@ import com.pixelscientists.gdx.jam.entity.Asteroid;
 import com.pixelscientists.gdx.jam.entity.BlackHole;
 import com.pixelscientists.gdx.jam.entity.Mine;
 import com.pixelscientists.gdx.jam.entity.Player;
+import com.pixelscientists.gdx.jam.entity.enemy.Enemy;
 import com.pixelscientists.gdx.jam.subsystem.OverlaySubsystem;
 import com.pixelscientists.gdx.jam.subsystem.entity.EntitySubSystem;
 import com.pixelscientists.gdx.jam.subsystem.hud.UiSubSystem;
@@ -69,6 +70,8 @@ public class GameScreen implements Screen {
 
         Asteroid asteroid4 = new Asteroid(MathUtils.random(0.3f, 3f));
         asteroid4.body.setTransform(new Vector2(3, -3), asteroid4.body.getAngle());
+
+        Enemy enemy = new Enemy();
 
         Mine mine = new Mine();
         mine.body.setTransform(new Vector2(5, 0), mine.body.getAngle());
