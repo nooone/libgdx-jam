@@ -6,6 +6,7 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -13,9 +14,9 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.pixelscientists.gdx.commons.graphics.g2d.parallax.ParallaxBackground;
-import com.pixelscientists.gdx.commons.graphics.g2d.parallax.ParallaxCamera;
-import com.pixelscientists.gdx.commons.graphics.g2d.parallax.ParallaxLayer;
+//import com.pixelscientists.gdx.commons.graphics.g2d.parallax.ParallaxBackground;
+//import com.pixelscientists.gdx.commons.graphics.g2d.parallax.ParallaxCamera;
+//import com.pixelscientists.gdx.commons.graphics.g2d.parallax.ParallaxLayer;
 import com.pixelscientists.gdx.jam.di.DI;
 import com.pixelscientists.gdx.jam.entity.Asteroid;
 import com.pixelscientists.gdx.jam.entity.BlackHole;
@@ -26,6 +27,9 @@ import com.pixelscientists.gdx.jam.subsystem.OverlaySubsystem;
 import com.pixelscientists.gdx.jam.subsystem.entity.EntitySubSystem;
 import com.pixelscientists.gdx.jam.subsystem.hud.UiSubSystem;
 import com.pixelscientists.gdx.jam.subsystem.physics.PhysicsSubSystem;
+import com.rahul.libgdx.parallax.ParallaxBackground;
+import com.rahul.libgdx.parallax.ParallaxLayer;
+import com.rahul.libgdx.parallax.TextureRegionParallaxLayer;
 
 import javax.inject.Inject;
 
@@ -82,8 +86,12 @@ public class GameScreen implements Screen {
         debugRenderer = new Box2DDebugRenderer(true, true, false, true, true, true);
 
 //        parallaxBackground = new ParallaxBackground(new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
-        parallaxBackground = new ParallaxBackground(new ParallaxCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
-        ParallaxLayer layer = new ParallaxLayer(new TextureRegion(new Texture("textures/backgrounds/1.jpg")), new Vector2(1f, 1f), new Vector2(0f, 0f), new Vector2(0f, 0f));
+//        parallaxBackground = new ParallaxBackground(new ParallaxCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
+        parallaxBackground = new com.rahul.libgdx.parallax.ParallaxBackground();
+        ParallaxLayer layer = new TextureRegionParallaxLayer(new TextureRegion(new Texture("textures/backgrounds/background_01_parallax_01.png")), 16, 9, new Vector2(1, 1));
+        layer.setTileModeX(ParallaxLayer.TileMode.repeat);
+        layer.setTileModeY(ParallaxLayer.TileMode.repeat);
+//        ParallaxLayer layer = new ParallaxLayer(new TextureRegion(new Texture("textures/backgrounds/1.jpg")), new Vector2(1f, 1f), new Vector2(0f, 0f), new Vector2(0f, 0f));
         parallaxBackground.layers.add(layer);
 
         InputMultiplexer inputMultiplexer = new InputMultiplexer();
@@ -101,7 +109,10 @@ public class GameScreen implements Screen {
         gameViewport.getCamera().position.set(entitySubSystem.player.body.getPosition(), 0);
         gameViewport.getCamera().update(true);
 
-        parallaxBackground.render(spriteBatch, entitySubSystem.player.body.getPosition());
+//        parallaxBackground.render(spriteBatch, entitySubSystem.player.body.getPosition());
+        spriteBatch.begin();
+        parallaxBackground.draw((OrthographicCamera) gameViewport.getCamera(), spriteBatch);
+        spriteBatch.end();
 
         entitySubSystem.update(delta);
 
@@ -118,6 +129,8 @@ public class GameScreen implements Screen {
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
             Gdx.app.exit();
         }
+
+        uiSubSystem.stage.draw();
     }
 
     @Override
@@ -125,9 +138,9 @@ public class GameScreen implements Screen {
         uiSubSystem.stage.getViewport().update(width, height, true);
         gameViewport.update(width, height);
 
-        parallaxBackground = new ParallaxBackground(new ParallaxCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
-        ParallaxLayer layer = new ParallaxLayer(new TextureRegion(new Texture("textures/backgrounds/1.jpg")), new Vector2(1f, 1f), new Vector2(0f, 0f), new Vector2(0f, 0f));
-        parallaxBackground.layers.add(layer);
+//        parallaxBackground = new ParallaxBackground(new ParallaxCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
+//        ParallaxLayer layer = new ParallaxLayer(new TextureRegion(new Texture("textures/backgrounds/1.jpg")), new Vector2(1f, 1f), new Vector2(0f, 0f), new Vector2(0f, 0f));
+//        parallaxBackground.layers.add(layer);
     }
 
     @Override

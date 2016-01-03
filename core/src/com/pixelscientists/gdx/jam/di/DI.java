@@ -1,5 +1,6 @@
 package com.pixelscientists.gdx.jam.di;
 
+import com.badlogic.gdx.Game;
 import com.pixelscientists.gdx.jam.di.application.DaggerApplicationComponent;
 import com.pixelscientists.gdx.jam.di.application.ApplicationComponent;
 import com.pixelscientists.gdx.jam.di.application.ApplicationModule;
@@ -14,8 +15,8 @@ public abstract class DI {
     private static ApplicationComponent applicationComponent;
     private static GameComponent gameComponent;
 
-    public static void newApplication() {
-        applicationComponent = DaggerApplicationComponent.builder().applicationModule(new ApplicationModule()).build();
+    public static void newApplication(Game game) {
+        applicationComponent = DaggerApplicationComponent.builder().applicationModule(new ApplicationModule(game)).build();
     }
 
     public static void newGame() {
