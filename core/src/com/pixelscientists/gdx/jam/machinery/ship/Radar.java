@@ -1,39 +1,47 @@
 package com.pixelscientists.gdx.jam.machinery.ship;
 
+import com.pixelscientists.gdx.jam.machinery.BaseUpgradeable;
+import com.pixelscientists.gdx.jam.machinery.Upgrade;
+import com.pixelscientists.gdx.jam.machinery.Upgradeable;
+
 /**
- *
- *
  * @author Daniel Holderbaum
  */
-public class Radar {
+public class Radar implements Upgradeable<Radar.RadarLevel> {
 
-    public enum RadarUpgrade {
+    public enum RadarLevel implements Upgrade {
         BASE(300), UPGRADE_I(500), UPGRADE_II(1000);
 
-        RadarUpgrade(float maxEnergy) {
-            this.maxEnergy = maxEnergy;
+        RadarLevel(float energyPerSecond) {
+            this.energyPerSecond = energyPerSecond;
         }
 
-        private final float maxEnergy;
+        private final float energyPerSecond;
 
-        public float getMaxEnergy() {
-            return maxEnergy;
+        public float getEnergyPerSecond() {
+            return energyPerSecond;
+        }
+
+        @Override
+        public int getPrice() {
+            return BaseUpgradeable.getPrice(this);
+        }
+
+        @Override
+        public Upgrade getNext() {
+            return BaseUpgradeable.getNext(this);
         }
     }
 
-    private RadarUpgrade radarUpgrade = RadarUpgrade.BASE;
-    private float energy = radarUpgrade.maxEnergy;
+    private RadarLevel radarLevel = RadarLevel.BASE;
 
-    public boolean isEmpty() {
-        return energy <= 0;
+    @Override
+    public RadarLevel getCurrentUpgrade() {
+        return radarLevel;
     }
 
-    public RadarUpgrade getRadarUpgrade() {
-        return radarUpgrade;
-    }
-
-    public float getEnergy() {
-        return energy;
+    public float getEnergyPerSecond() {
+        return radarLevel.getEnergyPerSecond();
     }
 
 }

@@ -1,12 +1,8 @@
 package com.pixelscientists.gdx.jam.ui.hud;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.pixelscientists.gdx.jam.machinery.container.Battery;
-import com.pixelscientists.gdx.jam.machinery.container.FuelTank;
-import com.pixelscientists.gdx.jam.machinery.ship.Hull;
-import com.pixelscientists.gdx.jam.machinery.ship.Shield;
+import com.pixelscientists.gdx.jam.ui.hud.status.ShipStatusWindow;
 
 /**
  * @author Daniel Holderbaum

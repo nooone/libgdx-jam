@@ -1,4 +1,4 @@
-package com.pixelscientists.gdx.jam.ui.hud;
+package com.pixelscientists.gdx.jam.ui.hud.status;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
