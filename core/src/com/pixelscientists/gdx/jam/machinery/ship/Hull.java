@@ -46,6 +46,10 @@ public class Hull implements Upgradeable<Hull.HullLevel> {
         return hullLevel.getMaxHealth();
     }
 
+    public boolean isBroken() {
+        return health <= 0f;
+    }
+
     @Override
     public HullLevel getCurrentUpgrade() {
         return hullLevel;

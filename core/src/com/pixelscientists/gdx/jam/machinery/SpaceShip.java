@@ -36,6 +36,18 @@ public class Spaceship {
     protected SolarCells solarCells;
     protected Generator generator;
 
+    protected SpaceshipConfiguration spaceshipConfiguration;
+
+    public void takeDamage(float damage) {
+//        shield.c
+    }
+
+    public void update(float deltaTime) {
+        if (spaceshipConfiguration.isShieldEnabled()) {
+            shield.charge(battery, deltaTime);
+        }
+    }
+
     public Battery getBattery() {
         return battery;
     }

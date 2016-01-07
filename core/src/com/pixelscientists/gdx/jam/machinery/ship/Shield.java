@@ -3,6 +3,7 @@ package com.pixelscientists.gdx.jam.machinery.ship;
 import com.pixelscientists.gdx.jam.machinery.BaseUpgradeable;
 import com.pixelscientists.gdx.jam.machinery.Upgrade;
 import com.pixelscientists.gdx.jam.machinery.Upgradeable;
+import com.pixelscientists.gdx.jam.machinery.container.Battery;
 
 /**
  * A shield recharges after taking damage. Recharging a shield costs energy. Upgrades make recharge faster.
@@ -51,6 +52,14 @@ public class Shield implements Upgradeable<Shield.ShieldLevel> {
     @Override
     public ShieldLevel getCurrentUpgrade() {
         return shieldLevel;
+    }
+
+    public void charge(Battery battery, float deltaTime) {
+        float missingShield = getMaxShield() - shield;
+        float shieldToCharge = Math.min(missingShield, getShieldPerSecond() * deltaTime);
+        float neededEnergy = shieldToCharge / getS * getEnergyPerSecond();
+        float battery.uncharge(neededEnergy);
+        shield += shieldToCharge;
     }
 
     public float getShield() {

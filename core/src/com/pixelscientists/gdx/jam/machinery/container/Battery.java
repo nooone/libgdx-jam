@@ -1,5 +1,6 @@
 package com.pixelscientists.gdx.jam.machinery.container;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.pixelscientists.gdx.jam.machinery.BaseUpgradeable;
 import com.pixelscientists.gdx.jam.machinery.Upgrade;
 import com.pixelscientists.gdx.jam.machinery.Upgradeable;
@@ -48,8 +49,17 @@ public class Battery implements Upgradeable<Battery.BatteryLevel> {
         return batteryLevel;
     }
 
-    public void changeEnergy(float deltaEnergy) {
-        energy += deltaEnergy;
+    public void charge(float newEnergy) {
+        assert newEnergy >= 0;
+        energy += newEnergy;
+        energy = Math.min(energy, getMaxEnergy());
+    }
+
+    public float uncharge(float wantedEnergy) {
+        assert wantedEnergy >= 0;
+        float returnedEnergy = Math.min(wantedEnergy, energy);
+        energy -= returnedEnergy;
+        return returnedEnergy;
     }
 
     public float getMaxEnergy() {
