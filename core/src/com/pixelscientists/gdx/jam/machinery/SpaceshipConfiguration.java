@@ -9,9 +9,19 @@ public class SpaceshipConfiguration {
 
     private boolean radarEnabled;
 
-    private boolean burnOxygen;
+    private boolean burnOxygenEnabled;
 
-    private boolean burnFuel;
+    private boolean burnFuelEnabled;
+
+    private boolean repairBotsEnabled;
+
+    public boolean isRepairBotsEnabled() {
+        return repairBotsEnabled;
+    }
+
+    public void setRepairBotsEnabled(boolean repairBotsEnabled) {
+        this.repairBotsEnabled = repairBotsEnabled;
+    }
 
     public boolean isShieldEnabled() {
         return shieldEnabled;
@@ -29,19 +39,19 @@ public class SpaceshipConfiguration {
         this.radarEnabled = radarEnabled;
     }
 
-    public boolean isBurnOxygen() {
-        return burnOxygen;
+    public boolean isBurnOxygenEnabled() {
+        return burnOxygenEnabled;
     }
 
-    public void setBurnOxygen(boolean burnOxygen) {
-        this.burnOxygen = burnOxygen;
+    public void setBurnOxygenEnabled(boolean burnOxygenEnabled) {
+        this.burnOxygenEnabled = burnOxygenEnabled;
     }
 
-    public boolean isBurnFuel() {
-        return burnFuel;
+    public boolean isBurnFuelEnabled() {
+        return burnFuelEnabled;
     }
 
-    public void setBurnFuel(boolean burnFuel) {
-        this.burnFuel = burnFuel;
+    public void setBurnFuelEnabled(boolean burnFuelEnabled) {
+        this.burnFuelEnabled = burnFuelEnabled;
     }
 }

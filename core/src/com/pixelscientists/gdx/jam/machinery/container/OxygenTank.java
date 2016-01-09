@@ -39,6 +39,19 @@ public class OxygenTank implements Upgradeable<OxygenTank.OxygenTankLevel> {
     private OxygenTankLevel oxygenTankLevel = OxygenTankLevel.BASE;
     private float oxygen = oxygenTankLevel.maxOxygen;
 
+    public void fill(float newOxygen) {
+        assert newOxygen >= 0;
+        oxygen += newOxygen;
+        oxygen = Math.min(oxygen, getMaxOxygen());
+    }
+
+    public float unfill(float wantedOxygen) {
+        assert wantedOxygen >= 0;
+        float returnedOxygen = Math.min(wantedOxygen, oxygen);
+        oxygen -= returnedOxygen;
+        return returnedOxygen;
+    }
+
     public boolean isEmpty() {
         return oxygen <= 0;
     }
@@ -49,10 +62,6 @@ public class OxygenTank implements Upgradeable<OxygenTank.OxygenTankLevel> {
 
     public float getMissingOxygen() {
         return oxygenTankLevel.maxOxygen - oxygen;
-    }
-
-    public void changeOxygen(float oxygen) {
-        this.oxygen += oxygen;
     }
 
     public float getMaxOxygen() {

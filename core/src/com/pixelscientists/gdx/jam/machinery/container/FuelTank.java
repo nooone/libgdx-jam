@@ -36,6 +36,18 @@ public class FuelTank implements Upgradeable<FuelTank.FuelTankLevel> {
     private FuelTankLevel fuelTankLevel = FuelTankLevel.BASE;
     private float fuel = fuelTankLevel.maxFuel;
 
+    public void fill(float newFuel) {
+        assert newFuel >= 0;
+        fuel += newFuel;
+        fuel = Math.min(fuel, getMaxFuel());
+    }
+
+    public float unfill(float wantedFuel) {
+        assert wantedFuel >= 0;
+        float returnedFuel = Math.min(wantedFuel, fuel);
+        fuel -= returnedFuel;
+        return returnedFuel;
+    }
 
     @Override
     public FuelTankLevel getCurrentUpgrade() {

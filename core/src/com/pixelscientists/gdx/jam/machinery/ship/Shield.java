@@ -54,9 +54,14 @@ public class Shield implements Upgradeable<Shield.ShieldLevel> {
         return shieldLevel;
     }
 
+    public float damage(float damage) {
+        float absorbedDamage = Math.min(shield, damage);
+        shield -= absorbedDamage;
+        return damage - absorbedDamage;
+    }
+
     public void charge(Battery battery, float deltaTime) {
-        float missingShield = getMaxShield() - shield;
-        float shieldToCharge = Math.min(missingShield, getShieldPerSecond() * deltaTime);
+        float shieldToCharge = Math.min(getMissingShield(), getShieldPerSecond() * deltaTime);
         float neededEnergy = shieldToCharge / getS * getEnergyPerSecond();
         float battery.uncharge(neededEnergy);
         shield += shieldToCharge;
@@ -64,6 +69,10 @@ public class Shield implements Upgradeable<Shield.ShieldLevel> {
 
     public float getShield() {
         return shield;
+    }
+
+    public float getMissingShield() {
+        return getMaxShield() - shield;
     }
 
     public float getMaxShield() {

@@ -10,20 +10,21 @@ import com.pixelscientists.gdx.jam.machinery.SpaceshipConfiguration;
 /**
  * @author Daniel Holderbaum
  */
-public class ToggleRadarButton extends TextButton {
+public class ToggleRepairBotsButton extends TextButton {
 
     private Spaceship spaceship;
 
-    public ToggleRadarButton(Skin skin, final Spaceship spaceship) {
-        super("Radar: Off", skin);
+
+    public ToggleRepairBotsButton(Skin skin, final Spaceship spaceship) {
+        super("Repair Bots: Off", skin);
         this.spaceship = spaceship;
 
         addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 SpaceshipConfiguration spaceshipConfiguration = spaceship.getSpaceshipConfiguration();
-                spaceshipConfiguration.setRadarEnabled(!spaceshipConfiguration.isRadarEnabled());
-                setText("Radar: " + (spaceshipConfiguration.isRadarEnabled() ? "On" : "Off"));
+                spaceshipConfiguration.setRepairBotsEnabled(!spaceshipConfiguration.isRepairBotsEnabled());
+                setText("Repair Bots: " + (spaceshipConfiguration.isRepairBotsEnabled() ? "On" : "Off"));
             }
         });
     }

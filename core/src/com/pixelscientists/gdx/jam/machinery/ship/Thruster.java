@@ -3,6 +3,7 @@ package com.pixelscientists.gdx.jam.machinery.ship;
 import com.pixelscientists.gdx.jam.machinery.BaseUpgradeable;
 import com.pixelscientists.gdx.jam.machinery.Upgrade;
 import com.pixelscientists.gdx.jam.machinery.Upgradeable;
+import com.pixelscientists.gdx.jam.machinery.container.FuelTank;
 
 /**
  * Fuel is used when using the thrusters. Upgrades: Less fuel consumption, faster movement, anti-thruster.
@@ -44,12 +45,19 @@ public class Thruster implements Upgradeable<Thruster.ThrusterLevel> {
 
     private ThrusterLevel thrusterLevel = ThrusterLevel.BASE;
 
+    public float thrust(FuelTank fuelTank, float deltaTime) {
+        float neededFuel = getFuelPerSecond() * deltaTime;
+        float availableFuel = fuelTank.unfill(neededFuel);
+        float multiplier = availableFuel / neededFuel;
+        return getForcePerSecond() * deltaTime * multiplier;
+    }
+
     @Override
     public ThrusterLevel getCurrentUpgrade() {
         return thrusterLevel;
     }
 
-    public float getFuelConsumptionPerSecond() {
+    public float getFuelPerSecond() {
         return thrusterLevel.getFuelConsumptionPerSecond();
     }
 

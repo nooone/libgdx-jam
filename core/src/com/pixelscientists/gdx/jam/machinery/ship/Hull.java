@@ -38,6 +38,21 @@ public class Hull implements Upgradeable<Hull.HullLevel> {
     private HullLevel hullLevel = HullLevel.BASE;
     private float health = hullLevel.getMaxHealth();
 
+    public float getMissingHealth() {
+        return getMaxHealth() - health;
+    }
+
+    public void repair(float reparation) {
+        assert reparation >= 0;
+        health += reparation;
+        health = Math.min(health, getMaxHealth());
+    }
+
+    public void damage(float damage) {
+        assert damage >= 0;
+        health -= damage;
+    }
+
     public float getHealth() {
         return health;
     }

@@ -6,6 +6,7 @@ import com.pixelscientists.gdx.jam.machinery.container.FuelTank;
 import com.pixelscientists.gdx.jam.machinery.container.OxygenTank;
 import com.pixelscientists.gdx.jam.machinery.generator.Generator;
 import com.pixelscientists.gdx.jam.machinery.generator.OxygenExtractor;
+import com.pixelscientists.gdx.jam.machinery.generator.RepairBots;
 import com.pixelscientists.gdx.jam.machinery.generator.SolarCells;
 import com.pixelscientists.gdx.jam.machinery.ship.Hull;
 import com.pixelscientists.gdx.jam.machinery.ship.Shield;
@@ -35,8 +36,19 @@ public class Spaceship {
     protected OxygenExtractor oxygenExtractor;
     protected SolarCells solarCells;
     protected Generator generator;
+    protected RepairBots repairBots;
 
     protected SpaceshipConfiguration spaceshipConfiguration;
+
+    public Spaceship() {
+        battery = new Battery();
+        fuelTank = new FuelTank();
+        oxygenTank = new OxygenTank();
+        bankAccount = new BankAccount();
+        hull = new Hull();
+        thruster = new Thruster();
+        cannon = new Cannon();
+    }
 
     public void takeDamage(float damage) {
 //        shield.c
@@ -46,6 +58,14 @@ public class Spaceship {
         if (spaceshipConfiguration.isShieldEnabled()) {
             shield.charge(battery, deltaTime);
         }
+    }
+
+    public SpaceshipConfiguration getSpaceshipConfiguration() {
+        return spaceshipConfiguration;
+    }
+
+    public RepairBots getRepairBots() {
+        return repairBots;
     }
 
     public Battery getBattery() {
