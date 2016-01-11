@@ -1,8 +1,7 @@
-package com.pixelscientists.gdx.jam.machinery.generator;
+package com.pixelscientists.gdx.jam.spaceship.generator;
 
-import com.pixelscientists.gdx.jam.machinery.BaseUpgradeable;
-import com.pixelscientists.gdx.jam.machinery.Upgrade;
-import com.pixelscientists.gdx.jam.machinery.Upgradeable;
+import com.pixelscientists.gdx.jam.spaceship.BaseUpgradeable;
+import com.pixelscientists.gdx.jam.spaceship.Upgrade;
 
 /**
  * Constantly generate a small amount of energy.
@@ -25,7 +24,7 @@ public class SolarCells extends BaseUpgradeable<SolarCells.SolarCellsLevel> {
         }
 
         @Override
-        public int getPrice() {
+        public float getPrice() {
             return BaseUpgradeable.getPrice(this);
         }
 

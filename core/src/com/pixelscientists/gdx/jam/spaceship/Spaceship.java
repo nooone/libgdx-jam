@@ -1,19 +1,20 @@
-package com.pixelscientists.gdx.jam.machinery;
+package com.pixelscientists.gdx.jam.spaceship;
 
-import com.pixelscientists.gdx.jam.machinery.container.BankAccount;
-import com.pixelscientists.gdx.jam.machinery.container.Battery;
-import com.pixelscientists.gdx.jam.machinery.container.FuelTank;
-import com.pixelscientists.gdx.jam.machinery.container.OxygenTank;
-import com.pixelscientists.gdx.jam.machinery.generator.Generator;
-import com.pixelscientists.gdx.jam.machinery.generator.OxygenExtractor;
-import com.pixelscientists.gdx.jam.machinery.generator.RepairBots;
-import com.pixelscientists.gdx.jam.machinery.generator.SolarCells;
-import com.pixelscientists.gdx.jam.machinery.ship.Hull;
-import com.pixelscientists.gdx.jam.machinery.ship.Shield;
-import com.pixelscientists.gdx.jam.machinery.ship.Thruster;
-import com.pixelscientists.gdx.jam.machinery.weapon.Cannon;
-import com.pixelscientists.gdx.jam.machinery.weapon.MineDropper;
-import com.pixelscientists.gdx.jam.machinery.weapon.RocketLauncher;
+import com.badlogic.gdx.utils.Array;
+import com.pixelscientists.gdx.jam.spaceship.container.BankAccount;
+import com.pixelscientists.gdx.jam.spaceship.container.Battery;
+import com.pixelscientists.gdx.jam.spaceship.container.FuelTank;
+import com.pixelscientists.gdx.jam.spaceship.container.OxygenTank;
+import com.pixelscientists.gdx.jam.spaceship.generator.Generator;
+import com.pixelscientists.gdx.jam.spaceship.generator.OxygenExtractor;
+import com.pixelscientists.gdx.jam.spaceship.generator.RepairBots;
+import com.pixelscientists.gdx.jam.spaceship.generator.SolarCells;
+import com.pixelscientists.gdx.jam.spaceship.ship.Hull;
+import com.pixelscientists.gdx.jam.spaceship.ship.Shield;
+import com.pixelscientists.gdx.jam.spaceship.ship.Thruster;
+import com.pixelscientists.gdx.jam.spaceship.weapon.Cannon;
+import com.pixelscientists.gdx.jam.spaceship.weapon.MineDropper;
+import com.pixelscientists.gdx.jam.spaceship.weapon.RocketLauncher;
 
 /**
  * @author Daniel Holderbaum
@@ -62,13 +63,46 @@ public class Spaceship {
         spaceshipConfiguration = new SpaceshipConfiguration();
     }
 
+    public Array<Upgradeable> getUpgradeables() {
+        Array<Upgradeable> upgradeables = new Array<>();
+
+        upgradeables.add(battery);
+        upgradeables.add(fuelTank);
+        upgradeables.add(oxygenTank);
+
+        upgradeables.add(hull);
+        upgradeables.add(shield);
+        upgradeables.add(thruster);
+
+        upgradeables.add(cannon);
+        upgradeables.add(mineDropper);
+        upgradeables.add(rocketLauncher);
+
+        upgradeables.add(oxygenExtractor);
+        upgradeables.add(solarCells);
+        upgradeables.add(generator);
+        upgradeables.add(repairBots);
+
+        return upgradeables;
+    }
+
     public void takeDamage(float damage) {
-//        shield.c
+        float nonAbsorbedDamage = shield.damage(damage);
+        hull.damage(nonAbsorbedDamage);
     }
 
     public void update(float deltaTime) {
         if (spaceshipConfiguration.isShieldEnabled()) {
             shield.charge(battery, deltaTime);
+        }
+        if (spaceshipConfiguration.isBurnFuelEnabled()) {
+            generator.burn(fuelTank, battery, deltaTime);
+        }
+        if (spaceshipConfiguration.isBurnOxygenEnabled()) {
+            generator.burn(oxygenTank, battery, deltaTime);
+        }
+        if (spaceshipConfiguration.isRepairBotsEnabled()) {
+            repairBots.repair(battery, hull, deltaTime);
         }
     }
 

@@ -2,8 +2,7 @@ package com.pixelscientists.gdx.jam.ui.hud.configuration;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
-import com.pixelscientists.gdx.jam.machinery.Spaceship;
-import com.pixelscientists.gdx.jam.machinery.SpaceshipConfiguration;
+import com.pixelscientists.gdx.jam.spaceship.Spaceship;
 
 /**
  * @author Daniel Holderbaum

@@ -2,7 +2,7 @@ package com.pixelscientists.gdx.jam.ui.hud;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.pixelscientists.gdx.jam.machinery.Spaceship;
+import com.pixelscientists.gdx.jam.spaceship.Spaceship;
 import com.pixelscientists.gdx.jam.ui.hud.configuration.ShipConfigurationWindow;
 import com.pixelscientists.gdx.jam.ui.hud.status.ShipStatusWindow;
 

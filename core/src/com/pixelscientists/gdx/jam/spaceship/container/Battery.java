@@ -1,9 +1,7 @@
-package com.pixelscientists.gdx.jam.machinery.container;
+package com.pixelscientists.gdx.jam.spaceship.container;
 
-import com.badlogic.gdx.math.MathUtils;
-import com.pixelscientists.gdx.jam.machinery.BaseUpgradeable;
-import com.pixelscientists.gdx.jam.machinery.Upgrade;
-import com.pixelscientists.gdx.jam.machinery.Upgradeable;
+import com.pixelscientists.gdx.jam.spaceship.BaseUpgradeable;
+import com.pixelscientists.gdx.jam.spaceship.Upgrade;
 
 /**
  * Stores energy. Upgrades can increase the maximum amount of energy stored.
@@ -26,7 +24,7 @@ public class Battery extends BaseUpgradeable<Battery.BatteryLevel> {
         }
 
         @Override
-        public int getPrice() {
+        public float getPrice() {
             return BaseUpgradeable.getPrice(this);
         }
 

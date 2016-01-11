@@ -1,11 +1,11 @@
-package com.pixelscientists.gdx.jam.machinery;
+package com.pixelscientists.gdx.jam.spaceship;
 
 /**
  * @author Daniel Holderbaum
  */
 public interface Upgrade {
 
-    int getPrice();
+    float getPrice();
 
     Upgrade getNext();
 //    Upgrade getPrevious();

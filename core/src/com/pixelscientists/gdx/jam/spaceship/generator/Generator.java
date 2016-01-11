@@ -1,11 +1,10 @@
-package com.pixelscientists.gdx.jam.machinery.generator;
+package com.pixelscientists.gdx.jam.spaceship.generator;
 
-import com.pixelscientists.gdx.jam.machinery.BaseUpgradeable;
-import com.pixelscientists.gdx.jam.machinery.Upgrade;
-import com.pixelscientists.gdx.jam.machinery.Upgradeable;
-import com.pixelscientists.gdx.jam.machinery.container.Battery;
-import com.pixelscientists.gdx.jam.machinery.container.FuelTank;
-import com.pixelscientists.gdx.jam.machinery.container.OxygenTank;
+import com.pixelscientists.gdx.jam.spaceship.BaseUpgradeable;
+import com.pixelscientists.gdx.jam.spaceship.Upgrade;
+import com.pixelscientists.gdx.jam.spaceship.container.Battery;
+import com.pixelscientists.gdx.jam.spaceship.container.FuelTank;
+import com.pixelscientists.gdx.jam.spaceship.container.OxygenTank;
 
 /**
  * @author Daniel Holderbaum
@@ -13,7 +12,7 @@ import com.pixelscientists.gdx.jam.machinery.container.OxygenTank;
 public class Generator extends BaseUpgradeable<Generator.GeneratorLevel> {
 
     public enum GeneratorLevel implements Upgrade {
-        BASE(300, 100, 100), UPGRADE_I(500, 100, 100), UPGRADE_II(1000, 100, 100);
+        NONE(0, 0, 0), BASE(300, 100, 100), UPGRADE_I(500, 100, 100), UPGRADE_II(1000, 100, 100);
 
         GeneratorLevel(float fuelPerSecond, float energyPerSecond, float oxygenPerSecond) {
             this.fuelPerSecond = fuelPerSecond;
@@ -38,7 +37,7 @@ public class Generator extends BaseUpgradeable<Generator.GeneratorLevel> {
         }
 
         @Override
-        public int getPrice() {
+        public float getPrice() {
             return BaseUpgradeable.getPrice(this);
         }
 
@@ -48,7 +47,9 @@ public class Generator extends BaseUpgradeable<Generator.GeneratorLevel> {
         }
     }
 
-    private GeneratorLevel generatorLevel = GeneratorLevel.BASE;
+    public Generator() {
+        super(GeneratorLevel.BASE);
+    }
 
     public void burn(OxygenTank oxygenTank, Battery battery, float deltaTime) {
         float oxygenToBurn = getOxygenPerSecond() * deltaTime;
@@ -64,20 +65,15 @@ public class Generator extends BaseUpgradeable<Generator.GeneratorLevel> {
         battery.charge(getEnergyPerSecond() * deltaTime * multiplier);
     }
 
-    @Override
-    public GeneratorLevel getCurrentUpgrade() {
-        return generatorLevel;
-    }
-
     public float getEnergyPerSecond() {
-        return generatorLevel.getEnergyPerSecond();
+        return upgrade.getEnergyPerSecond();
     }
 
     public float getFuelPerSecond() {
-        return generatorLevel.getFuelPerSecond();
+        return upgrade.getFuelPerSecond();
     }
 
     public float getOxygenPerSecond() {
-        return generatorLevel.getOxygenPerSecond();
+        return upgrade.getOxygenPerSecond();
     }
 }

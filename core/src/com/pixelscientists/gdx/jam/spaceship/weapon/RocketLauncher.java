@@ -1,8 +1,7 @@
-package com.pixelscientists.gdx.jam.machinery.weapon;
+package com.pixelscientists.gdx.jam.spaceship.weapon;
 
-import com.pixelscientists.gdx.jam.machinery.BaseUpgradeable;
-import com.pixelscientists.gdx.jam.machinery.Upgrade;
-import com.pixelscientists.gdx.jam.machinery.Upgradeable;
+import com.pixelscientists.gdx.jam.spaceship.BaseUpgradeable;
+import com.pixelscientists.gdx.jam.spaceship.Upgrade;
 
 /**
  * A type of weapon that deals high damage on impact. Can be upgraded to target seeking rockets. Higher damage. Max amount of rockets.
@@ -31,7 +30,7 @@ public class RocketLauncher extends BaseUpgradeable<RocketLauncher.RocketLaunche
         }
 
         @Override
-        public int getPrice() {
+        public float getPrice() {
             return BaseUpgradeable.getPrice(this);
         }
 

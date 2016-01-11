@@ -1,4 +1,4 @@
-package com.pixelscientists.gdx.jam.machinery;
+package com.pixelscientists.gdx.jam.spaceship;
 
 /**
  * @author Daniel Holderbaum

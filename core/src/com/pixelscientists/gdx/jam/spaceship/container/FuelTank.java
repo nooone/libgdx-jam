@@ -1,8 +1,7 @@
-package com.pixelscientists.gdx.jam.machinery.container;
+package com.pixelscientists.gdx.jam.spaceship.container;
 
-import com.pixelscientists.gdx.jam.machinery.BaseUpgradeable;
-import com.pixelscientists.gdx.jam.machinery.Upgrade;
-import com.pixelscientists.gdx.jam.machinery.Upgradeable;
+import com.pixelscientists.gdx.jam.spaceship.BaseUpgradeable;
+import com.pixelscientists.gdx.jam.spaceship.Upgrade;
 
 /**
  * @author Daniel Holderbaum
@@ -23,7 +22,7 @@ public class FuelTank extends BaseUpgradeable<FuelTank.FuelTankLevel> {
         }
 
         @Override
-        public int getPrice() {
+        public float getPrice() {
             return BaseUpgradeable.getPrice(this);
         }
 

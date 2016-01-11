@@ -1,9 +1,7 @@
-package com.pixelscientists.gdx.jam.machinery.container;
+package com.pixelscientists.gdx.jam.spaceship.container;
 
-import com.badlogic.gdx.math.MathUtils;
-import com.pixelscientists.gdx.jam.machinery.BaseUpgradeable;
-import com.pixelscientists.gdx.jam.machinery.Upgrade;
-import com.pixelscientists.gdx.jam.machinery.Upgradeable;
+import com.pixelscientists.gdx.jam.spaceship.BaseUpgradeable;
+import com.pixelscientists.gdx.jam.spaceship.Upgrade;
 
 /**
  * Oxygen is constantly decreasing. It can be refilled at merchants or extracted from ice asteroids.
@@ -26,7 +24,7 @@ public class OxygenTank extends BaseUpgradeable<OxygenTank.OxygenTankLevel> {
         }
 
         @Override
-        public int getPrice() {
+        public float getPrice() {
             return BaseUpgradeable.getPrice(this);
         }
 
@@ -36,8 +34,11 @@ public class OxygenTank extends BaseUpgradeable<OxygenTank.OxygenTankLevel> {
         }
     }
 
-    private OxygenTankLevel oxygenTankLevel = OxygenTankLevel.BASE;
-    private float oxygen = oxygenTankLevel.maxOxygen;
+    private float oxygen = upgrade.maxOxygen;
+
+    public OxygenTank() {
+        super(OxygenTankLevel.NONE);
+    }
 
     public void fill(float newOxygen) {
         assert newOxygen >= 0;
@@ -61,16 +62,12 @@ public class OxygenTank extends BaseUpgradeable<OxygenTank.OxygenTankLevel> {
     }
 
     public float getMissingOxygen() {
-        return oxygenTankLevel.maxOxygen - oxygen;
+        return upgrade.maxOxygen - oxygen;
     }
 
     public float getMaxOxygen() {
-        return oxygenTankLevel.getMaxOxygen();
+        return upgrade.getMaxOxygen();
     }
 
-    @Override
-    public OxygenTankLevel getCurrentUpgrade() {
-        return oxygenTankLevel;
-    }
 
 }

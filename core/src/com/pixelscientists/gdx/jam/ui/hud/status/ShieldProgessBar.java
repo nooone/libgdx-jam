@@ -3,7 +3,7 @@ package com.pixelscientists.gdx.jam.ui.hud.status;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.pixelscientists.gdx.jam.machinery.ship.Shield;
+import com.pixelscientists.gdx.jam.spaceship.ship.Shield;
 
 /**
  * @author Daniel Holderbaum

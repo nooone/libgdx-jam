@@ -3,8 +3,7 @@ package com.pixelscientists.gdx.jam.ui.hud.status;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.pixelscientists.gdx.jam.machinery.container.Battery;
-import com.pixelscientists.gdx.jam.machinery.container.FuelTank;
+import com.pixelscientists.gdx.jam.spaceship.container.FuelTank;
 
 /**
  * @author Daniel Holderbaum

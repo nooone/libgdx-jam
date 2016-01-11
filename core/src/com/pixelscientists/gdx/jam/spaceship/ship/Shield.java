@@ -1,9 +1,8 @@
-package com.pixelscientists.gdx.jam.machinery.ship;
+package com.pixelscientists.gdx.jam.spaceship.ship;
 
-import com.pixelscientists.gdx.jam.machinery.BaseUpgradeable;
-import com.pixelscientists.gdx.jam.machinery.Upgrade;
-import com.pixelscientists.gdx.jam.machinery.Upgradeable;
-import com.pixelscientists.gdx.jam.machinery.container.Battery;
+import com.pixelscientists.gdx.jam.spaceship.BaseUpgradeable;
+import com.pixelscientists.gdx.jam.spaceship.Upgrade;
+import com.pixelscientists.gdx.jam.spaceship.container.Battery;
 
 /**
  * A shield recharges after taking damage. Recharging a shield costs energy. Upgrades make recharge faster.
@@ -36,7 +35,7 @@ public class Shield extends BaseUpgradeable<Shield.ShieldLevel> {
         }
 
         @Override
-        public int getPrice() {
+        public float getPrice() {
             return BaseUpgradeable.getPrice(this);
         }
 

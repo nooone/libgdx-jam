@@ -3,11 +3,7 @@ package com.pixelscientists.gdx.jam.ui.hud.status;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
-import com.pixelscientists.gdx.jam.machinery.Spaceship;
-import com.pixelscientists.gdx.jam.machinery.container.Battery;
-import com.pixelscientists.gdx.jam.machinery.container.FuelTank;
-import com.pixelscientists.gdx.jam.machinery.ship.Hull;
-import com.pixelscientists.gdx.jam.machinery.ship.Shield;
+import com.pixelscientists.gdx.jam.spaceship.Spaceship;
 
 /**
  * @author Daniel Holderbaum

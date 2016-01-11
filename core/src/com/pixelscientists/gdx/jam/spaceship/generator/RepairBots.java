@@ -1,10 +1,9 @@
-package com.pixelscientists.gdx.jam.machinery.generator;
+package com.pixelscientists.gdx.jam.spaceship.generator;
 
-import com.pixelscientists.gdx.jam.machinery.BaseUpgradeable;
-import com.pixelscientists.gdx.jam.machinery.Upgrade;
-import com.pixelscientists.gdx.jam.machinery.Upgradeable;
-import com.pixelscientists.gdx.jam.machinery.container.Battery;
-import com.pixelscientists.gdx.jam.machinery.ship.Hull;
+import com.pixelscientists.gdx.jam.spaceship.BaseUpgradeable;
+import com.pixelscientists.gdx.jam.spaceship.Upgrade;
+import com.pixelscientists.gdx.jam.spaceship.container.Battery;
+import com.pixelscientists.gdx.jam.spaceship.ship.Hull;
 
 /**
  * @author Daniel Holderbaum
@@ -31,7 +30,7 @@ public class RepairBots extends BaseUpgradeable<RepairBots.RepairBotsLevel> {
         }
 
         @Override
-        public int getPrice() {
+        public float getPrice() {
             return BaseUpgradeable.getPrice(this);
         }
 
@@ -41,7 +40,9 @@ public class RepairBots extends BaseUpgradeable<RepairBots.RepairBotsLevel> {
         }
     }
 
-    private RepairBotsLevel repairBotsLevel = RepairBotsLevel.BASE;
+    public RepairBots() {
+        super(RepairBotsLevel.NONE);
+    }
 
     public void repair(Battery battery, Hull hull, float deltaTime) {
 //        float repairingTime = Math.min(deltaTime, hull.getMissingHealth() / getRepairPerSecond());
@@ -52,16 +53,11 @@ public class RepairBots extends BaseUpgradeable<RepairBots.RepairBotsLevel> {
         hull.repair(getRepairPerSecond() * deltaTime * multiplier);
     }
 
-    @Override
-    public RepairBotsLevel getCurrentUpgrade() {
-        return repairBotsLevel;
-    }
-
     public float getRepairPerSecond() {
-        return repairBotsLevel.getRepairPerSecond();
+        return upgrade.getRepairPerSecond();
     }
 
     public float getEnergyPerSecond() {
-        return repairBotsLevel.getEnergyPerSecond();
+        return upgrade.getEnergyPerSecond();
     }
 }

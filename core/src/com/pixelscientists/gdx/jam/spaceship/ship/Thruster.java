@@ -1,9 +1,8 @@
-package com.pixelscientists.gdx.jam.machinery.ship;
+package com.pixelscientists.gdx.jam.spaceship.ship;
 
-import com.pixelscientists.gdx.jam.machinery.BaseUpgradeable;
-import com.pixelscientists.gdx.jam.machinery.Upgrade;
-import com.pixelscientists.gdx.jam.machinery.Upgradeable;
-import com.pixelscientists.gdx.jam.machinery.container.FuelTank;
+import com.pixelscientists.gdx.jam.spaceship.BaseUpgradeable;
+import com.pixelscientists.gdx.jam.spaceship.Upgrade;
+import com.pixelscientists.gdx.jam.spaceship.container.FuelTank;
 
 /**
  * Fuel is used when using the thrusters. Upgrades: Less fuel consumption, faster movement, anti-thruster.
@@ -33,7 +32,7 @@ public class Thruster extends BaseUpgradeable<Thruster.ThrusterLevel> {
         }
 
         @Override
-        public int getPrice() {
+        public float getPrice() {
             return BaseUpgradeable.getPrice(this);
         }
 

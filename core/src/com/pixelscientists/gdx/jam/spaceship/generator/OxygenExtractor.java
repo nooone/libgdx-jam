@@ -1,8 +1,7 @@
-package com.pixelscientists.gdx.jam.machinery.generator;
+package com.pixelscientists.gdx.jam.spaceship.generator;
 
-import com.pixelscientists.gdx.jam.machinery.BaseUpgradeable;
-import com.pixelscientists.gdx.jam.machinery.Upgrade;
-import com.pixelscientists.gdx.jam.machinery.Upgradeable;
+import com.pixelscientists.gdx.jam.spaceship.BaseUpgradeable;
+import com.pixelscientists.gdx.jam.spaceship.Upgrade;
 
 /**
  * Uses energy to extract oxygen from ice asteroids.
@@ -31,7 +30,7 @@ public class OxygenExtractor extends BaseUpgradeable<OxygenExtractor.OxygenExtra
         }
 
         @Override
-        public int getPrice() {
+        public float getPrice() {
             return BaseUpgradeable.getPrice(this);
         }
 
@@ -41,18 +40,15 @@ public class OxygenExtractor extends BaseUpgradeable<OxygenExtractor.OxygenExtra
         }
     }
 
-    private OxygenExtractorLevel oxygenExtractorLevel = OxygenExtractorLevel.BASE;
-
-    @Override
-    public OxygenExtractorLevel getCurrentUpgrade() {
-        return oxygenExtractorLevel;
+    public OxygenExtractor() {
+        super(OxygenExtractorLevel.NONE);
     }
 
     public float getOxygenPerSecond() {
-        return oxygenExtractorLevel.getOxygenPerSecond();
+        return upgrade.getOxygenPerSecond();
     }
 
     public float getEnergyPerSecond() {
-        return oxygenExtractorLevel.getEnergyPerSecond();
+        return upgrade.getEnergyPerSecond();
     }
 }

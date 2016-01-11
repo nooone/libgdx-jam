@@ -1,18 +1,17 @@
-package com.pixelscientists.gdx.jam.machinery.weapon;
+package com.pixelscientists.gdx.jam.spaceship.weapon;
 
-import com.pixelscientists.gdx.jam.machinery.BaseUpgradeable;
-import com.pixelscientists.gdx.jam.machinery.Upgrade;
-import com.pixelscientists.gdx.jam.machinery.Upgradeable;
+import com.pixelscientists.gdx.jam.spaceship.BaseUpgradeable;
+import com.pixelscientists.gdx.jam.spaceship.Upgrade;
 
 /**
  * @author Daniel Holderbaum
  */
-public class MineDropper extends BaseUpgradeable<MineDropper.MineDropperLevel> {
+public class Cannon extends BaseUpgradeable<Cannon.CannonLevel> {
 
-    public enum MineDropperLevel implements Upgrade {
+    public enum CannonLevel implements Upgrade {
         NONE(0), BASE(300), UPGRADE_I(500), UPGRADE_II(1000);
 
-        MineDropperLevel(float energyPerShot) {
+        CannonLevel(float energyPerShot) {
             this.energyPerShot = energyPerShot;
         }
 
@@ -23,7 +22,7 @@ public class MineDropper extends BaseUpgradeable<MineDropper.MineDropperLevel> {
         }
 
         @Override
-        public int getPrice() {
+        public float getPrice() {
             return BaseUpgradeable.getPrice(this);
         }
 
@@ -33,8 +32,8 @@ public class MineDropper extends BaseUpgradeable<MineDropper.MineDropperLevel> {
         }
     }
 
-    public MineDropper() {
-        super(MineDropperLevel.NONE);
+    public Cannon() {
+        super(CannonLevel.NONE);
     }
 
     public float getEnergyPerShot() {

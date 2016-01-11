@@ -4,8 +4,8 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.pixelscientists.gdx.jam.machinery.Spaceship;
-import com.pixelscientists.gdx.jam.machinery.SpaceshipConfiguration;
+import com.pixelscientists.gdx.jam.spaceship.Spaceship;
+import com.pixelscientists.gdx.jam.spaceship.SpaceshipConfiguration;
 
 /**
  * @author Daniel Holderbaum

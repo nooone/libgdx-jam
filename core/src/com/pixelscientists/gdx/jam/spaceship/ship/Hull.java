@@ -1,8 +1,7 @@
-package com.pixelscientists.gdx.jam.machinery.ship;
+package com.pixelscientists.gdx.jam.spaceship.ship;
 
-import com.pixelscientists.gdx.jam.machinery.BaseUpgradeable;
-import com.pixelscientists.gdx.jam.machinery.Upgrade;
-import com.pixelscientists.gdx.jam.machinery.Upgradeable;
+import com.pixelscientists.gdx.jam.spaceship.BaseUpgradeable;
+import com.pixelscientists.gdx.jam.spaceship.Upgrade;
 
 /**
  * Hull is the amount of health that a spaceship can have. If it breaks, the game is lost. It can be repaired using scrap-metal. Can be upgraded to take have higher health.
@@ -25,7 +24,7 @@ public class Hull extends BaseUpgradeable<Hull.HullLevel> {
         }
 
         @Override
-        public int getPrice() {
+        public float getPrice() {
             return BaseUpgradeable.getPrice(this);
         }
 
