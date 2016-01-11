@@ -9,10 +9,10 @@ import com.pixelscientists.gdx.jam.machinery.Upgradeable;
  *
  * @author Daniel Holderbaum
  */
-public class SolarCells implements Upgradeable<SolarCells.SolarCellsLevel> {
+public class SolarCells extends BaseUpgradeable<SolarCells.SolarCellsLevel> {
 
     public enum SolarCellsLevel implements Upgrade {
-        BASE(300), UPGRADE_I(500), UPGRADE_II(1000);
+        NONE(0), BASE(300), UPGRADE_I(500), UPGRADE_II(1000);
 
         SolarCellsLevel(float energyPerSecond) {
             this.energyPerSecond = energyPerSecond;
@@ -35,14 +35,11 @@ public class SolarCells implements Upgradeable<SolarCells.SolarCellsLevel> {
         }
     }
 
-    private SolarCellsLevel solarCellsLevel = SolarCellsLevel.BASE;
-
-    @Override
-    public SolarCellsLevel getCurrentUpgrade() {
-        return solarCellsLevel;
+    public SolarCells() {
+        super(SolarCellsLevel.NONE);
     }
 
     public float getEnergyPerSecond() {
-        return solarCellsLevel.getEnergyPerSecond();
+        return upgrade.getEnergyPerSecond();
     }
 }

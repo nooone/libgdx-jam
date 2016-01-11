@@ -7,19 +7,19 @@ import com.pixelscientists.gdx.jam.machinery.Upgradeable;
 /**
  * @author Daniel Holderbaum
  */
-public class MineDropper implements Upgradeable<MineDropper.MineDropperLevel> {
+public class MineDropper extends BaseUpgradeable<MineDropper.MineDropperLevel> {
 
     public enum MineDropperLevel implements Upgrade {
-        BASE(300), UPGRADE_I(500), UPGRADE_II(1000);
+        NONE(0), BASE(300), UPGRADE_I(500), UPGRADE_II(1000);
 
-        MineDropperLevel(float energyPerSecond) {
-            this.energyPerSecond = energyPerSecond;
+        MineDropperLevel(float energyPerShot) {
+            this.energyPerShot = energyPerShot;
         }
 
-        private final float energyPerSecond;
+        private final float energyPerShot;
 
-        public float getEnergyPerSecond() {
-            return energyPerSecond;
+        public float getEnergyPerShot() {
+            return energyPerShot;
         }
 
         @Override
@@ -33,14 +33,11 @@ public class MineDropper implements Upgradeable<MineDropper.MineDropperLevel> {
         }
     }
 
-    private MineDropperLevel mineDropperLevel = MineDropperLevel.BASE;
-
-    @Override
-    public MineDropperLevel getCurrentUpgrade() {
-        return mineDropperLevel;
+    public MineDropper() {
+        super(MineDropperLevel.NONE);
     }
 
-    public float getEnergyPerSecond() {
-        return mineDropperLevel.getEnergyPerSecond();
+    public float getEnergyPerShot() {
+        return upgrade.getEnergyPerShot();
     }
 }

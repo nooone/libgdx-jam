@@ -15,7 +15,7 @@ public class ToggleBurnOxygenButton extends TextButton {
     private Spaceship spaceship;
 
     public ToggleBurnOxygenButton(Skin skin, final Spaceship spaceship) {
-        super("Generator (Oxygen): Off", skin);
+        super("Off", skin);
         this.spaceship = spaceship;
 
         addListener(new ClickListener() {
@@ -23,7 +23,7 @@ public class ToggleBurnOxygenButton extends TextButton {
             public void clicked(InputEvent event, float x, float y) {
                 SpaceshipConfiguration spaceshipConfiguration = spaceship.getSpaceshipConfiguration();
                 spaceshipConfiguration.setBurnOxygenEnabled(!spaceshipConfiguration.isBurnOxygenEnabled());
-                setText("Generator (Oxygen): " + (spaceshipConfiguration.isBurnOxygenEnabled() ? "On" : "Off"));
+                setText(spaceshipConfiguration.isBurnOxygenEnabled() ? "On" : "Off");
             }
         });
     }

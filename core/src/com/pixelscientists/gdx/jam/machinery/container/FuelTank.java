@@ -7,10 +7,10 @@ import com.pixelscientists.gdx.jam.machinery.Upgradeable;
 /**
  * @author Daniel Holderbaum
  */
-public class FuelTank implements Upgradeable<FuelTank.FuelTankLevel> {
+public class FuelTank extends BaseUpgradeable<FuelTank.FuelTankLevel> {
 
     public enum FuelTankLevel implements Upgrade {
-        BASE(300), UPGRADE_I(500), UPGRADE_II(1000);
+        NONE(0), BASE(300), UPGRADE_I(500), UPGRADE_II(1000);
 
         FuelTankLevel(float maxFuel) {
             this.maxFuel = maxFuel;
@@ -33,8 +33,11 @@ public class FuelTank implements Upgradeable<FuelTank.FuelTankLevel> {
         }
     }
 
-    private FuelTankLevel fuelTankLevel = FuelTankLevel.BASE;
-    private float fuel = fuelTankLevel.maxFuel;
+    private float fuel = upgrade.maxFuel;
+
+    public FuelTank() {
+        super(FuelTankLevel.NONE);
+    }
 
     public void fill(float newFuel) {
         assert newFuel >= 0;
@@ -49,17 +52,8 @@ public class FuelTank implements Upgradeable<FuelTank.FuelTankLevel> {
         return returnedFuel;
     }
 
-    @Override
-    public FuelTankLevel getCurrentUpgrade() {
-        return fuelTankLevel;
-    }
-
     public boolean isEmpty() {
         return fuel <= 0;
-    }
-
-    public FuelTankLevel getFuelTankLevel() {
-        return fuelTankLevel;
     }
 
     public float getFuel() {
@@ -71,11 +65,11 @@ public class FuelTank implements Upgradeable<FuelTank.FuelTankLevel> {
     }
 
     public float getMaxFuel() {
-        return fuelTankLevel.getMaxFuel();
+        return upgrade.getMaxFuel();
     }
 
     public float getMissingFuel() {
-        return fuelTankLevel.getMaxFuel() - fuel;
+        return upgrade.getMaxFuel() - fuel;
     }
 
 }

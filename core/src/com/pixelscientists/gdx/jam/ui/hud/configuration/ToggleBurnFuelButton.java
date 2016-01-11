@@ -15,7 +15,7 @@ public class ToggleBurnFuelButton extends TextButton {
     private Spaceship spaceship;
 
     public ToggleBurnFuelButton(Skin skin, final Spaceship spaceship) {
-        super("Generator (Fuel): Off", skin);
+        super("Off", skin);
         this.spaceship = spaceship;
 
         addListener(new ClickListener() {
@@ -23,7 +23,7 @@ public class ToggleBurnFuelButton extends TextButton {
             public void clicked(InputEvent event, float x, float y) {
                 SpaceshipConfiguration spaceshipConfiguration = spaceship.getSpaceshipConfiguration();
                 spaceshipConfiguration.setBurnFuelEnabled(!spaceshipConfiguration.isBurnFuelEnabled());
-                setText("Generator (Fuel): " + (spaceshipConfiguration.isBurnFuelEnabled() ? "On" : "Off"));
+                setText(spaceshipConfiguration.isBurnFuelEnabled() ? "On" : "Off");
             }
         });
     }

@@ -3,7 +3,18 @@ package com.pixelscientists.gdx.jam.machinery;
 /**
  * @author Daniel Holderbaum
  */
-public abstract class BaseUpgradeable {
+public abstract class BaseUpgradeable<T extends Upgrade> implements Upgradeable<T> {
+
+    protected T upgrade;
+
+    public BaseUpgradeable(T upgrade) {
+        this.upgrade = upgrade;
+    }
+
+    @Override
+    public T getCurrentUpgrade() {
+        return upgrade;
+    }
 
     public static <E extends Enum<E>> E getNext(Enum<E> upgrade) {
         int index = upgrade.ordinal();

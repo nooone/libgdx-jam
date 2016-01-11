@@ -45,9 +45,21 @@ public class Spaceship {
         fuelTank = new FuelTank();
         oxygenTank = new OxygenTank();
         bankAccount = new BankAccount();
+
         hull = new Hull();
+        shield = new Shield();
         thruster = new Thruster();
+
         cannon = new Cannon();
+        mineDropper = new MineDropper();
+        rocketLauncher = new RocketLauncher();
+
+        oxygenExtractor = new OxygenExtractor();
+        solarCells = new SolarCells();
+        generator = new Generator();
+        repairBots = new RepairBots();
+
+        spaceshipConfiguration = new SpaceshipConfiguration();
     }
 
     public void takeDamage(float damage) {

@@ -15,7 +15,7 @@ public class ToggleRadarButton extends TextButton {
     private Spaceship spaceship;
 
     public ToggleRadarButton(Skin skin, final Spaceship spaceship) {
-        super("Radar: Off", skin);
+        super("Off", skin);
         this.spaceship = spaceship;
 
         addListener(new ClickListener() {
@@ -23,7 +23,7 @@ public class ToggleRadarButton extends TextButton {
             public void clicked(InputEvent event, float x, float y) {
                 SpaceshipConfiguration spaceshipConfiguration = spaceship.getSpaceshipConfiguration();
                 spaceshipConfiguration.setRadarEnabled(!spaceshipConfiguration.isRadarEnabled());
-                setText("Radar: " + (spaceshipConfiguration.isRadarEnabled() ? "On" : "Off"));
+                setText(spaceshipConfiguration.isRadarEnabled() ? "On" : "Off");
             }
         });
     }

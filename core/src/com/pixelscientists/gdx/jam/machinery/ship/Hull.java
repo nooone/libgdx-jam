@@ -9,10 +9,10 @@ import com.pixelscientists.gdx.jam.machinery.Upgradeable;
  *
  * @author Daniel Holderbaum
  */
-public class Hull implements Upgradeable<Hull.HullLevel> {
+public class Hull extends BaseUpgradeable<Hull.HullLevel> {
 
     public enum HullLevel implements Upgrade {
-        BASE(300), UPGRADE_I(500), UPGRADE_II(1000);
+        NONE(0), BASE(300), UPGRADE_I(500), UPGRADE_II(1000);
 
         HullLevel(float maxHealth) {
             this.maxHealth = maxHealth;
@@ -35,8 +35,11 @@ public class Hull implements Upgradeable<Hull.HullLevel> {
         }
     }
 
-    private HullLevel hullLevel = HullLevel.BASE;
-    private float health = hullLevel.getMaxHealth();
+    private float health = upgrade.getMaxHealth();
+
+    public Hull() {
+        super(HullLevel.NONE);
+    }
 
     public float getMissingHealth() {
         return getMaxHealth() - health;
@@ -58,15 +61,10 @@ public class Hull implements Upgradeable<Hull.HullLevel> {
     }
 
     public float getMaxHealth() {
-        return hullLevel.getMaxHealth();
+        return upgrade.getMaxHealth();
     }
 
     public boolean isBroken() {
         return health <= 0f;
-    }
-
-    @Override
-    public HullLevel getCurrentUpgrade() {
-        return hullLevel;
     }
 }

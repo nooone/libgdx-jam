@@ -9,19 +9,25 @@ import com.pixelscientists.gdx.jam.machinery.Upgradeable;
  *
  * @author Daniel Holderbaum
  */
-public class RocketLauncher implements Upgradeable<RocketLauncher.RocketLauncherLevel> {
+public class RocketLauncher extends BaseUpgradeable<RocketLauncher.RocketLauncherLevel> {
 
     public enum RocketLauncherLevel implements Upgrade {
-        BASE(300), UPGRADE_I(500), UPGRADE_II(1000);
+        NONE(0, 0), BASE(10, 150), UPGRADE_I(10, 250), UPGRADE_II(10, 500);
 
-        RocketLauncherLevel(float energyPerSecond) {
-            this.energyPerSecond = energyPerSecond;
+        RocketLauncherLevel(float fuelPerShot, float damage) {
+            this.fuelPerShot = fuelPerShot;
+            this.damage = damage;
         }
 
-        private final float energyPerSecond;
+        private final float fuelPerShot;
+        private final float damage;
 
-        public float getEnergyPerSecond() {
-            return energyPerSecond;
+        public float getFuelPerShot() {
+            return fuelPerShot;
+        }
+
+        public float getDamage() {
+            return damage;
         }
 
         @Override
@@ -35,14 +41,15 @@ public class RocketLauncher implements Upgradeable<RocketLauncher.RocketLauncher
         }
     }
 
-    private RocketLauncherLevel rocketLauncherLevel = RocketLauncherLevel.BASE;
-
-    @Override
-    public RocketLauncherLevel getCurrentUpgrade() {
-        return rocketLauncherLevel;
+    public RocketLauncher() {
+        super(RocketLauncherLevel.NONE);
     }
 
-    public float getEnergyPerSecond() {
-        return rocketLauncherLevel.getEnergyPerSecond();
+    public float getFuelPerShot() {
+        return upgrade.getFuelPerShot();
+    }
+
+    public float getDamage() {
+        return upgrade.getDamage();
     }
 }

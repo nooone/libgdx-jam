@@ -10,10 +10,10 @@ import com.pixelscientists.gdx.jam.machinery.Upgradeable;
  *
  * @author Daniel Holderbaum
  */
-public class Battery implements Upgradeable<Battery.BatteryLevel> {
+public class Battery extends BaseUpgradeable<Battery.BatteryLevel> {
 
     public enum BatteryLevel implements Upgrade {
-        BASE(300), UPGRADE_I(500), UPGRADE_II(1000);
+        NONE(0), BASE(300), UPGRADE_I(500), UPGRADE_II(1000);
 
         BatteryLevel(float maxEnergy) {
             this.maxEnergy = maxEnergy;
@@ -36,17 +36,14 @@ public class Battery implements Upgradeable<Battery.BatteryLevel> {
         }
     }
 
-    private BatteryLevel batteryLevel = BatteryLevel.BASE;
+    private float energy = upgrade.maxEnergy;
 
-    private float energy = batteryLevel.maxEnergy;
+    public Battery() {
+        super(BatteryLevel.NONE);
+    }
 
     public boolean isEmpty() {
         return energy <= 0;
-    }
-
-    @Override
-    public BatteryLevel getCurrentUpgrade() {
-        return batteryLevel;
     }
 
     public void charge(float newEnergy) {
@@ -63,11 +60,11 @@ public class Battery implements Upgradeable<Battery.BatteryLevel> {
     }
 
     public float getMaxEnergy() {
-        return batteryLevel.getMaxEnergy();
+        return upgrade.getMaxEnergy();
     }
 
     public float getMissingEnergy() {
-        return batteryLevel.getMaxEnergy() - energy;
+        return upgrade.getMaxEnergy() - energy;
     }
 
     public float getEnergy() {

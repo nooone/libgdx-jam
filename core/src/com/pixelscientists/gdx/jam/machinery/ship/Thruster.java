@@ -10,22 +10,22 @@ import com.pixelscientists.gdx.jam.machinery.container.FuelTank;
  *
  * @author Daniel Holderbaum
  */
-public class Thruster implements Upgradeable<Thruster.ThrusterLevel> {
+public class Thruster extends BaseUpgradeable<Thruster.ThrusterLevel> {
 
     public enum ThrusterLevel implements Upgrade {
-        BASE(300, 100), UPGRADE_I(500, 100), UPGRADE_II(1000, 100);
+        NONE(0, 0), BASE(1, 10), UPGRADE_I(1, 20), UPGRADE_II(0.5f, 20);
 
-        ThrusterLevel(float fuelConsumptionPerSecond, float forcePerSecond) {
-            this.fuelConsumptionPerSecond = fuelConsumptionPerSecond;
+        ThrusterLevel(float fuelPerSecond, float forcePerSecond) {
+            this.fuelPerSecond = fuelPerSecond;
             this.forcePerSecond = forcePerSecond;
         }
 
-        private float fuelConsumptionPerSecond;
+        private float fuelPerSecond;
 
         private float forcePerSecond;
 
-        public float getFuelConsumptionPerSecond() {
-            return fuelConsumptionPerSecond;
+        public float getFuelPerSecond() {
+            return fuelPerSecond;
         }
 
         public float getForcePerSecond() {
@@ -43,7 +43,9 @@ public class Thruster implements Upgradeable<Thruster.ThrusterLevel> {
         }
     }
 
-    private ThrusterLevel thrusterLevel = ThrusterLevel.BASE;
+    public Thruster() {
+        super(ThrusterLevel.NONE);
+    }
 
     public float thrust(FuelTank fuelTank, float deltaTime) {
         float neededFuel = getFuelPerSecond() * deltaTime;
@@ -52,16 +54,11 @@ public class Thruster implements Upgradeable<Thruster.ThrusterLevel> {
         return getForcePerSecond() * deltaTime * multiplier;
     }
 
-    @Override
-    public ThrusterLevel getCurrentUpgrade() {
-        return thrusterLevel;
-    }
-
     public float getFuelPerSecond() {
-        return thrusterLevel.getFuelConsumptionPerSecond();
+        return upgrade.getFuelPerSecond();
     }
 
     public float getForcePerSecond() {
-        return thrusterLevel.getForcePerSecond();
+        return upgrade.getForcePerSecond();
     }
 }

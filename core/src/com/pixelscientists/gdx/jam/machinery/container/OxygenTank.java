@@ -10,10 +10,10 @@ import com.pixelscientists.gdx.jam.machinery.Upgradeable;
  *
  * @author Daniel Holderbaum
  */
-public class OxygenTank implements Upgradeable<OxygenTank.OxygenTankLevel> {
+public class OxygenTank extends BaseUpgradeable<OxygenTank.OxygenTankLevel> {
 
     public enum OxygenTankLevel implements Upgrade {
-        BASE(300), UPGRADE_I(500), UPGRADE_II(1000);
+        NONE(0), BASE(300), UPGRADE_I(500), UPGRADE_II(1000);
 
         OxygenTankLevel(float maxOxygen) {
             this.maxOxygen = maxOxygen;

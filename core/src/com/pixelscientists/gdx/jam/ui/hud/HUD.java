@@ -2,6 +2,8 @@ package com.pixelscientists.gdx.jam.ui.hud;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.pixelscientists.gdx.jam.machinery.Spaceship;
+import com.pixelscientists.gdx.jam.ui.hud.configuration.ShipConfigurationWindow;
 import com.pixelscientists.gdx.jam.ui.hud.status.ShipStatusWindow;
 
 /**
@@ -13,7 +15,11 @@ public class HUD extends Table {
         super(skin);
         setFillParent(true);
 
-        ShipStatusWindow shipStatusWindow = new ShipStatusWindow(skin);
+        Spaceship spaceship = new Spaceship();
+
+        ShipStatusWindow shipStatusWindow = new ShipStatusWindow(spaceship, skin);
         add(shipStatusWindow).top().left();
+        ShipConfigurationWindow shipConfigurationWindow = new ShipConfigurationWindow(spaceship, skin);
+        add(shipConfigurationWindow).top().right();
     }
 }

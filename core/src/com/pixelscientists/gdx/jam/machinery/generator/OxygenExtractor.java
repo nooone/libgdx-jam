@@ -9,10 +9,10 @@ import com.pixelscientists.gdx.jam.machinery.Upgradeable;
  *
  * @author Daniel Holderbaum
  */
-public class OxygenExtractor implements Upgradeable<OxygenExtractor.OxygenExtractorLevel> {
+public class OxygenExtractor extends BaseUpgradeable<OxygenExtractor.OxygenExtractorLevel> {
 
     public enum OxygenExtractorLevel implements Upgrade {
-        BASE(300, 100), UPGRADE_I(500, 100), UPGRADE_II(1000, 100);
+        NONE(0, 100), BASE(300, 100), UPGRADE_I(500, 100), UPGRADE_II(1000, 100);
 
         OxygenExtractorLevel(float oxygenPerSecond, float energyPerSecond) {
             this.oxygenPerSecond = oxygenPerSecond;

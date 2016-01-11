@@ -15,7 +15,7 @@ public class ToggleShieldButton extends TextButton {
     private Spaceship spaceship;
 
     public ToggleShieldButton(Skin skin, final Spaceship spaceship) {
-        super("Shield: Off", skin);
+        super("Off", skin);
         this.spaceship = spaceship;
 
         addListener(new ClickListener() {
@@ -23,7 +23,7 @@ public class ToggleShieldButton extends TextButton {
             public void clicked(InputEvent event, float x, float y) {
                 SpaceshipConfiguration spaceshipConfiguration = spaceship.getSpaceshipConfiguration();
                 spaceshipConfiguration.setShieldEnabled(!spaceshipConfiguration.isShieldEnabled());
-                setText("Shield: " + (spaceshipConfiguration.isShieldEnabled() ? "On" : "Off"));
+                setText(spaceshipConfiguration.isShieldEnabled() ? "On" : "Off");
             }
         });
     }

@@ -21,7 +21,7 @@ public class RefillOxygenTankButton extends BaseMerchantButton {
                 if (!isDisabled()) {
                     float maxPurchasableOxygen = Math.min(spaceship.getBankAccount().getCredits() / store.getPricePerOxygen(), spaceship.getOxygenTank().getMissingOxygen());
                     float price = maxPurchasableOxygen * store.getPricePerOxygen();
-                    spaceship.getOxygenTank().changeOxygen(maxPurchasableOxygen);
+                    spaceship.getOxygenTank().fill(maxPurchasableOxygen);
                     spaceship.getBankAccount().changeCredits(-price);
                 }
             }

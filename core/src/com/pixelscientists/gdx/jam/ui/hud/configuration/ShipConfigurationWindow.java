@@ -15,22 +15,27 @@ public class ShipConfigurationWindow extends Window {
     public ShipConfigurationWindow(Spaceship spaceship, Skin skin) {
         super("Ship Configuration", skin);
 
+        add("Generator (Fuel): ").left();
         ToggleBurnFuelButton toggleBurnFuelButton = new ToggleBurnFuelButton(skin, spaceship);
         add(toggleBurnFuelButton);
         row();
 
+        add("Generator (Oxygen): ").left();
         ToggleBurnOxygenButton toggleBurnOxygenButton = new ToggleBurnOxygenButton(skin, spaceship);
         add(toggleBurnOxygenButton);
         row();
 
+        add("Radar: ").left();
         ToggleRadarButton toggleRadarButton = new ToggleRadarButton(skin, spaceship);
         add(toggleRadarButton);
         row();
 
+        add("Repair Bots: ").left();
         ToggleRepairBotsButton toggleRepairBotsButton = new ToggleRepairBotsButton(skin, spaceship);
         add(toggleRepairBotsButton);
         row();
 
+        add("Shield: ").left();
         ToggleShieldButton toggleShieldButton = new ToggleShieldButton(skin, spaceship);
         add(toggleShieldButton);
         row();

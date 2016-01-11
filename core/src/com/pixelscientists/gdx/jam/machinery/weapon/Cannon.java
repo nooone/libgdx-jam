@@ -7,10 +7,10 @@ import com.pixelscientists.gdx.jam.machinery.Upgradeable;
 /**
  * @author Daniel Holderbaum
  */
-public class Cannon implements Upgradeable<Cannon.CannonLevel> {
+public class Cannon extends BaseUpgradeable<Cannon.CannonLevel> {
 
     public enum CannonLevel implements Upgrade {
-        BASE(300), UPGRADE_I(500), UPGRADE_II(1000);
+        NONE(0), BASE(300), UPGRADE_I(500), UPGRADE_II(1000);
 
         CannonLevel(float energyPerShot) {
             this.energyPerShot = energyPerShot;
@@ -33,14 +33,11 @@ public class Cannon implements Upgradeable<Cannon.CannonLevel> {
         }
     }
 
-    private CannonLevel cannonLevel = CannonLevel.BASE;
-
-    @Override
-    public CannonLevel getCurrentUpgrade() {
-        return cannonLevel;
+    public Cannon() {
+        super(CannonLevel.NONE);
     }
 
     public float getEnergyPerShot() {
-        return cannonLevel.getEnergyPerShot();
+        return upgrade.getEnergyPerShot();
     }
 }

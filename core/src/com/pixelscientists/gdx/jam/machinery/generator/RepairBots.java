@@ -9,10 +9,10 @@ import com.pixelscientists.gdx.jam.machinery.ship.Hull;
 /**
  * @author Daniel Holderbaum
  */
-public class RepairBots implements Upgradeable<RepairBots.RepairBotsLevel> {
+public class RepairBots extends BaseUpgradeable<RepairBots.RepairBotsLevel> {
 
     public enum RepairBotsLevel implements Upgrade {
-        BASE(300, 100), UPGRADE_I(500, 100), UPGRADE_II(1000, 100);
+        NONE(0, 100), BASE(300, 100), UPGRADE_I(500, 100), UPGRADE_II(1000, 100);
 
         RepairBotsLevel(float repairPerSecond, float energyPerSecond) {
             this.repairPerSecond = repairPerSecond;

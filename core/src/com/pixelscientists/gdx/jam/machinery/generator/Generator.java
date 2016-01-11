@@ -10,7 +10,7 @@ import com.pixelscientists.gdx.jam.machinery.container.OxygenTank;
 /**
  * @author Daniel Holderbaum
  */
-public class Generator implements Upgradeable<Generator.GeneratorLevel> {
+public class Generator extends BaseUpgradeable<Generator.GeneratorLevel> {
 
     public enum GeneratorLevel implements Upgrade {
         BASE(300, 100, 100), UPGRADE_I(500, 100, 100), UPGRADE_II(1000, 100, 100);

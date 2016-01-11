@@ -16,7 +16,7 @@ public class ToggleRepairBotsButton extends TextButton {
 
 
     public ToggleRepairBotsButton(Skin skin, final Spaceship spaceship) {
-        super("Repair Bots: Off", skin);
+        super("Off", skin);
         this.spaceship = spaceship;
 
         addListener(new ClickListener() {
@@ -24,7 +24,7 @@ public class ToggleRepairBotsButton extends TextButton {
             public void clicked(InputEvent event, float x, float y) {
                 SpaceshipConfiguration spaceshipConfiguration = spaceship.getSpaceshipConfiguration();
                 spaceshipConfiguration.setRepairBotsEnabled(!spaceshipConfiguration.isRepairBotsEnabled());
-                setText("Repair Bots: " + (spaceshipConfiguration.isRepairBotsEnabled() ? "On" : "Off"));
+                setText(spaceshipConfiguration.isRepairBotsEnabled() ? "On" : "Off");
             }
         });
     }

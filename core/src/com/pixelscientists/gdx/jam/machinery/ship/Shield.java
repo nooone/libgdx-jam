@@ -10,10 +10,10 @@ import com.pixelscientists.gdx.jam.machinery.container.Battery;
  *
  * @author Daniel Holderbaum
  */
-public class Shield implements Upgradeable<Shield.ShieldLevel> {
+public class Shield extends BaseUpgradeable<Shield.ShieldLevel> {
 
     public enum ShieldLevel implements Upgrade {
-        BASE(300), UPGRADE_I(500), UPGRADE_II(1000);
+        NONE(0), BASE(300), UPGRADE_I(500), UPGRADE_II(1000);
 
         ShieldLevel(float maxShield) {
             this.maxShield = maxShield;
@@ -46,12 +46,10 @@ public class Shield implements Upgradeable<Shield.ShieldLevel> {
         }
     }
 
-    private ShieldLevel shieldLevel = ShieldLevel.BASE;
-    private float shield = shieldLevel.getMaxShield();
+    private float shield = upgrade.getMaxShield();
 
-    @Override
-    public ShieldLevel getCurrentUpgrade() {
-        return shieldLevel;
+    public Shield() {
+        super(ShieldLevel.NONE);
     }
 
     public float damage(float damage) {
@@ -61,10 +59,12 @@ public class Shield implements Upgradeable<Shield.ShieldLevel> {
     }
 
     public void charge(Battery battery, float deltaTime) {
-        float shieldToCharge = Math.min(getMissingShield(), getShieldPerSecond() * deltaTime);
-        float neededEnergy = shieldToCharge / getS * getEnergyPerSecond();
-        float battery.uncharge(neededEnergy);
-        shield += shieldToCharge;
+//        float shieldToCharge = Math.min(getMissingShield(), getShieldPerSecond() * deltaTime);
+        float shieldToCharge = getShieldPerSecond() * deltaTime;
+        float neededEnergy = getEnergyPerSecond() * deltaTime;
+        float availableEnergy = battery.uncharge(neededEnergy);
+        float multiplier = availableEnergy / neededEnergy;
+        shield += shieldToCharge * multiplier;
     }
 
     public float getShield() {
@@ -76,14 +76,14 @@ public class Shield implements Upgradeable<Shield.ShieldLevel> {
     }
 
     public float getMaxShield() {
-        return shieldLevel.getMaxShield();
+        return upgrade.getMaxShield();
     }
 
     public float getShieldPerSecond() {
-        return shieldLevel.getShieldPerSecond();
+        return upgrade.getShieldPerSecond();
     }
 
     public float getEnergyPerSecond() {
-        return shieldLevel.getEnergyPerSecond();
+        return upgrade.getEnergyPerSecond();
     }
 }
