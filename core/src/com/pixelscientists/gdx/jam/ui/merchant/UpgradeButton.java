@@ -17,7 +17,7 @@ public class UpgradeButton extends TextButton {
     private Spaceship spaceship;
     private Upgradeable<?> upgradeable;
 
-    public UpgradeButton(Upgradeable<?> upgradeable, Skin skin) {
+    public UpgradeButton(final Upgradeable<?> upgradeable, Skin skin) {
         super(upgradeable.getCurrentUpgrade().toString(), skin);
 
         addListener(new ClickListener() {

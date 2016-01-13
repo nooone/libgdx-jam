@@ -22,7 +22,7 @@ public class RefillFuelTankButton extends BaseMerchantButton {
                     float maxPurchasableFuel = Math.min(spaceship.getBankAccount().getCredits() / store.getPricePerFuel(), spaceship.getFuelTank().getMissingFuel());
                     float price = maxPurchasableFuel * store.getPricePerFuel();
                     spaceship.getFuelTank().fill(maxPurchasableFuel);
-                    spaceship.getBankAccount().changeCredits(-price);
+                    spaceship.getBankAccount().withdraw(price);
                 }
             }
         });

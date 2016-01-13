@@ -11,10 +11,10 @@ public class Store {
     private float pricePerOxygen;
     private float pricePerEnergy;
 
-    private Array<Upgradeable> availableUpgradeables = new Array<>();
+    private Array<Upgradeable> availableUpgradeables = new Array<Upgradeable>();
 
     public Store(Spaceship spaceship) {
-        Array<Upgradeable> allUpgradeables = new Array<>(spaceship.getUpgradeables());
+        Array<Upgradeable> allUpgradeables = new Array<Upgradeable>(spaceship.getUpgradeables());
         allUpgradeables.shuffle();
         for (int i = 0; i < 3; i++) {
             availableUpgradeables.add(allUpgradeables.get(i));

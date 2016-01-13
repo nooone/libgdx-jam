@@ -22,7 +22,7 @@ public class RechargeBatteryButton extends BaseMerchantButton {
                     float maxRechargableEnergy = Math.min(spaceship.getBankAccount().getCredits() / store.getPricePerEnergy(), spaceship.getBattery().getMissingEnergy());
                     float price = maxRechargableEnergy * store.getPricePerEnergy();
                     spaceship.getBattery().charge(maxRechargableEnergy);
-                    spaceship.getBankAccount().changeCredits(-price);
+                    spaceship.getBankAccount().withdraw(price);
                 }
             }
         });

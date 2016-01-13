@@ -17,7 +17,7 @@ public class DowngradeButton extends TextButton {
     private Spaceship spaceship;
     private Upgradeable<?> upgradeable;
 
-    public DowngradeButton(Upgradeable<?> upgradeable, Skin skin) {
+    public DowngradeButton(final Upgradeable<?> upgradeable, Skin skin) {
         super(upgradeable.getCurrentUpgrade().toString(), skin);
 
         addListener(new ClickListener() {

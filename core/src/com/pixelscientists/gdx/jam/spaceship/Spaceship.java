@@ -64,7 +64,7 @@ public class Spaceship {
     }
 
     public Array<Upgradeable> getUpgradeables() {
-        Array<Upgradeable> upgradeables = new Array<>();
+        Array<Upgradeable> upgradeables = new Array<Upgradeable>();
 
         upgradeables.add(battery);
         upgradeables.add(fuelTank);
